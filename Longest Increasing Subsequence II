@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums, int k) {
+         int max_val = 100000; // Given constraint
+        vector<int> dp(max_val + 1, 0); // Segment Tree substitute
+        
+        int maxLength = 0;
+        
+        for (int num : nums) {
+            int left = max(1, num - k);
+            int right = num - 1;
+            int best = 0;
+            
+            for (int i = left; i <= right; ++i) {
+                best = max(best, dp[i]);
+            }
+            
+            dp[num] = best + 1;
+            maxLength = max(maxLength, dp[num]);
+        }
+        
+        return maxLength;
+
+    }
+};
