@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> beautifulArray(int n) {
+         if (n == 1) return {1};
+        
+        vector<int> odd = beautifulArray((n + 1) / 2);  // for odd indices
+        vector<int> even = beautifulArray(n / 2);       // for even indices
+        
+        vector<int> result;
+        
+        // Add odd numbers to result (first part)
+        for (int x : odd) result.push_back(2 * x - 1);
+        
+        // Add even numbers to result (second part)
+        for (int x : even) result.push_back(2 * x);
+        
+        return result;
+    }
+};
