@@ -20,7 +20,7 @@ public:
             return left.size() >= right.size() ? left : right;
         }
         
-        return s; 
+        return s;
 
     }
 };
